@@ -12,7 +12,11 @@ browser.get('https://www.ru-divan.ru/catalog/divany/')
 
 prices = browser.find_elements(By.XPATH, "//div[@class='thumbnail-price float-left']")
 for price in prices:
-    print(price.text)
+    cleaned_price = price.text
+    cleaned_price = cleaned_price.replace(" ", "")
+    cleaned_price = int(cleaned_price.strip('от₽'))
+
+    print(cleaned_price)
 
 
 
